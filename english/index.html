@@ -930,5 +930,20 @@ document.querySelectorAll('[data-service]').forEach(function(el){
 })();
 </script>
 
+<script>
+// アフィリエイトボタンのクリックをGA4へ送信
+document.querySelectorAll('[data-service]').forEach(function(el){
+  el.addEventListener('click', function(){
+    if (typeof gtag !== 'function') return;
+    var href = el.href || '';
+    gtag('event', 'affiliate_click', {
+      service: el.getAttribute('data-service'),
+      is_affiliate: href.indexOf('a8.net') >= 0 ? 'yes' : 'no',
+      link_url: href
+    });
+  });
+});
+</script>
+
 </body>
 </html>
