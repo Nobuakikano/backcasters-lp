@@ -25,6 +25,7 @@
 
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
+  [hidden]{display:none!important}
   :root{
     --accent:#2f6fb8;
     --ink:#1d1d1f;
@@ -88,6 +89,21 @@
   .yt-box p small{display:block;color:var(--ink-soft);font-size:.85rem;margin-top:.2rem}
   .button-yt{background:#c4302b;color:#fff}
   .button-yt:hover{background:#a52621}
+  /* 実力チェック：3問でタイプを判定 */
+  .quiz{text-align:left;max-width:560px;margin:1.5rem auto 0}
+  .checkpoint .quiz-lead{text-align:center;margin-bottom:1.25rem}
+  .q{margin-bottom:1.25rem}
+  .checkpoint .q-title{font-weight:700;color:var(--ink);font-size:.98rem;margin-bottom:.6rem;display:flex;gap:.5rem;align-items:baseline}
+  .q-title span{flex:none;display:inline-grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;background:var(--accent);color:#fff;font-size:.8rem}
+  .opts{display:flex;flex-wrap:wrap;gap:.5rem}
+  .opts button{font:inherit;font-size:.9rem;padding:.6rem 1rem;border-radius:6px;border:1px solid #d9cfae;background:#fff;color:var(--ink);cursor:pointer;flex:1 1 auto;min-width:8.5rem}
+  .opts button:hover{border-color:var(--accent)}
+  .opts button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+  .result{background:#fff;border:2px solid var(--accent);border-radius:10px;padding:1.5rem;margin-top:1.5rem;text-align:center}
+  .checkpoint .r-label{font-size:.8rem;color:var(--ink-soft);letter-spacing:.08em}
+  .checkpoint .r-type{font-family:"Noto Serif JP",serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin:.25rem 0 .75rem}
+  .checkpoint .r-level{font-size:.92rem;color:var(--ink-soft);text-align:left}
+  .checkpoint .r-note{font-size:.78rem;color:var(--ink-soft);margin-top:1rem;text-align:left}
   footer{background:#eef0f3;padding:2rem 1rem;text-align:center;color:var(--ink-soft);font-size:.85rem;margin-top:3rem}
   footer a{color:var(--accent);text-decoration:none}
   footer a:hover{text-decoration:underline}
@@ -315,12 +331,50 @@
   <div class="checkpoint">
     <h2>実力チェック</h2>
     <p>この80フレーズが、日本語を見て1〜2秒で出てきますか。</p>
-    <div class="verdict">
+
+    <div class="quiz" id="quiz" hidden>
+      <p class="quiz-lead">3つの質問に答えると、あなたに近いタイプが分かります。</p>
+      <div class="q" data-q="level">
+        <p class="q-title"><span>1</span>80フレーズ、どのくらい口から出ましたか</p>
+        <div class="opts">
+          <button type="button" data-v="most">ほとんど出た</button>
+          <button type="button" data-v="half">半分くらい</button>
+          <button type="button" data-v="few">ほとんど出なかった</button>
+        </div>
+      </div>
+      <div class="q" data-q="deadline">
+        <p class="q-title"><span>2</span>英語が必要になる期限はありますか</p>
+        <div class="opts">
+          <button type="button" data-v="soon">半年以内に必要</button>
+          <button type="button" data-v="later">半年より先・特にない</button>
+        </div>
+      </div>
+      <div class="q" data-q="history">
+        <p class="q-title"><span>3</span>これまでの独学は続きましたか</p>
+        <div class="opts">
+          <button type="button" data-v="quit">途中でやめたことがある</button>
+          <button type="button" data-v="kept">続けられた</button>
+          <button type="button" data-v="none">まだ始めていない</button>
+        </div>
+      </div>
+      <div class="result" id="quiz-result" hidden aria-live="polite">
+        <p class="r-label">あなたに近いタイプ</p>
+        <p class="r-type" id="r-type"></p>
+        <p class="r-level" id="r-level"></p>
+        <div class="button-group">
+          <a href="/english/#picks" class="button button-primary" id="r-link" data-cta="quiz_result">このタイプのおすすめを見る</a>
+          <a href="/english/#picks" class="button button-secondary" data-cta="quiz_picks">3つのタイプを比べる</a>
+        </div>
+        <p class="r-note">※ 回答から近いタイプを示す目安です。最終的には各社の無料体験やカウンセリングで確かめてください。</p>
+      </div>
+    </div>
+
+    <div class="verdict" id="verdict-static">
       <div><b>ほとんど出る</b> → 語彙ではなく「実戦の場数」が足りていません。話す機会を増やす設計に切り替えましょう。</div>
       <div><b>半分くらい</b> → 独学でも伸びます。毎日同じ時間に繰り返す仕組みを先に作ってください。</div>
       <div><b>ほとんど出ない</b> → 独学で最も挫折しやすい段階です。第三者に毎日チェックしてもらう仕組みが効きます。</div>
     </div>
-    <div class="button-group">
+    <div class="button-group" id="cta-static">
       <a href="/english/#compare" class="button button-primary" data-cta="compare">スクール7社の比較を見る</a>
       <a href="/english/#picks" class="button button-secondary" data-cta="picks">タイプ別のおすすめを見る</a>
     </div>
@@ -380,6 +434,56 @@
       countEl.parentNode.style.visibility = practicing ? 'visible' : 'hidden';
       updateCount();
     });
+  })();
+
+  // 実力チェック：3問の回答から /english/ の3タイプのどれに近いかを示す
+  (function(){
+    var quiz = document.getElementById('quiz');
+    if (!quiz) return;
+    quiz.hidden = false;
+    document.getElementById('verdict-static').hidden = true;
+    document.getElementById('cta-static').hidden = true;
+
+    var TYPES = {
+      deadline: { name: '期限が決まっている人', anchor: '#progrit' },
+      coach:    { name: '自分では続けられる気がしない人', anchor: '#englishcompany' },
+      start:    { name: 'まず始めたい人', anchor: '#bizmates' }
+    };
+    var LEVEL = {
+      most: '80フレーズはほとんど出ています。足りないのは語彙ではなく、実際に話す場数です。',
+      half: '半分くらい出ています。毎日同じ時間に繰り返す仕組みを先に作ると伸びやすい段階です。',
+      few:  'まだ出てこない段階です。独学で最も止まりやすいところなので、一人で抱えずに続ける仕組みを先に用意するのが近道です。'
+    };
+    var answers = {};
+
+    quiz.querySelectorAll('.q').forEach(function(q){
+      q.querySelectorAll('button').forEach(function(btn){
+        btn.setAttribute('aria-pressed', 'false');
+        btn.addEventListener('click', function(){
+          q.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-pressed', 'false'); });
+          btn.setAttribute('aria-pressed', 'true');
+          answers[q.dataset.q] = btn.dataset.v;
+          show();
+        });
+      });
+    });
+
+    function show(){
+      if (!answers.level || !answers.deadline || !answers.history) return;
+      var key = answers.deadline === 'soon' ? 'deadline'
+              : answers.history === 'quit' ? 'coach'
+              : 'start';
+      var t = TYPES[key];
+      document.getElementById('r-type').textContent = t.name;
+      document.getElementById('r-level').textContent = LEVEL[answers.level];
+      document.getElementById('r-link').href = '/english/' + t.anchor;
+      document.getElementById('r-link').dataset.type = key;
+      var box = document.getElementById('quiz-result');
+      var first = box.hidden;
+      box.hidden = false;
+      if (first) box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (typeof gtag === 'function') gtag('event', 'quiz_result', { result_type: key, level: answers.level, source_page: 'phrases' });
+    }
   })();
 
   document.querySelectorAll('[data-cta]').forEach(function(el){
