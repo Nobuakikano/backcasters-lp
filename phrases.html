@@ -70,6 +70,24 @@
   .button-secondary{background:#fff;color:var(--ink);border:1px solid #cfd4da}
   .button-secondary:hover{background:#f0f2f4}
   .ad-note{margin-top:1rem;font-size:.8rem;color:var(--ink-soft);line-height:1.7}
+  /* 練習モード：英語をかくして、タップで答えを出す */
+  .practice-bar{position:sticky;top:0;z-index:10;background:rgba(247,248,250,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin:0 -1rem 2.5rem;padding:.75rem 1rem;display:none;align-items:center;justify-content:space-between;gap:.75rem;flex-wrap:wrap}
+  .js .practice-bar{display:flex}
+  .practice-bar .status{font-size:.88rem;color:var(--ink-soft)}
+  .practice-bar .status b{color:var(--ink)}
+  .practice-toggle{font:inherit;font-size:.88rem;font-weight:700;padding:.55rem 1rem;border-radius:6px;border:1px solid #cfd4da;background:#fff;color:var(--ink);cursor:pointer}
+  .practice-toggle:hover{background:#f0f2f4}
+  .practice .phrase-card{cursor:pointer;transition:border-color .15s,box-shadow .15s;user-select:none;-webkit-tap-highlight-color:transparent}
+  .practice .phrase-card:hover{border-color:#b9c7d8}
+  .practice .phrase-card:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .practice .phrase-card:not(.open) .en{color:transparent;background:#eef1f5;border-radius:4px;position:relative}
+  .practice .phrase-card:not(.open) .en::after{content:"タップで答え";position:absolute;left:.5rem;top:50%;transform:translateY(-50%);font-size:.75rem;font-weight:500;color:#8a929c;white-space:nowrap}
+  .practice .phrase-card.open{border-color:var(--accent)}
+  .yt-box{background:#fff;border:1px solid var(--line);border-radius:8px;padding:1.25rem 1.5rem;margin-bottom:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .yt-box p{font-size:.95rem}
+  .yt-box p small{display:block;color:var(--ink-soft);font-size:.85rem;margin-top:.2rem}
+  .button-yt{background:#c4302b;color:#fff}
+  .button-yt:hover{background:#a52621}
   footer{background:#eef0f3;padding:2rem 1rem;text-align:center;color:var(--ink-soft);font-size:.85rem;margin-top:3rem}
   footer a{color:var(--accent);text-decoration:none}
   footer a:hover{text-decoration:underline}
@@ -94,7 +112,18 @@
   <div class="intro">
     <h2>使い方</h2>
     <p>日本語を見て、1〜2秒で英語を<strong>声に出す</strong>練習用です。黙読では効果が出にくいので、必ず口に出してください。</p>
+    <p>英語は最初かくれています。先に声に出してから、カードをタップして答えを確かめてください。</p>
     <p>通勤中や休憩時間に、1日3分ずつで構いません。「考えてから言う」ではなく「考える前に出る」状態になるまで、同じフレーズを何度も繰り返すのがコツです。</p>
+  </div>
+
+  <div class="yt-box">
+    <p>毎日1本、新しい瞬間英作文をYouTubeで出しています。<small>音声つきで、聞いてすぐ口に出す練習ができます。</small></p>
+    <a href="https://www.youtube.com/@hitoriyaranai" class="button button-yt" target="_blank" rel="noopener" data-cta="youtube_top">YouTubeで今日の回を見る</a>
+  </div>
+
+  <div class="practice-bar" aria-live="polite">
+    <span class="status">答えを見たフレーズ：<b id="opened-count">0</b> / 80</span>
+    <button type="button" class="practice-toggle" id="practice-toggle">答えを全部見る</button>
   </div>
 
   <section>
@@ -302,12 +331,57 @@
 
 <footer>
   <p>「ひとりでやらない英語」は、社会人のビジネス英語学習を扱うメディアです。</p>
-  <p><a href="/english/">ビジネス英語スクール比較</a></p>
+  <p><a href="/english/">ビジネス英語スクール比較</a>　<a href="https://www.youtube.com/@hitoriyaranai" target="_blank" rel="noopener" data-cta="youtube_footer">YouTube（毎日の瞬間英作文）</a></p>
   <p style="font-size:.8rem">※ スクール比較ページは広告を含みます。</p>
   <p style="margin-top:1.2rem;font-size:.8rem">&copy; 2026 ひとりでやらない英語</p>
 </footer>
 
 <script>
+  // 練習モード：JavaScriptが動く環境だけ英語をかくす（動かない環境では従来どおり全部見える）
+  (function(){
+    var body = document.body;
+    var cards = document.querySelectorAll('.phrase-card');
+    var countEl = document.getElementById('opened-count');
+    var toggle = document.getElementById('practice-toggle');
+    var started = false;
+    body.classList.add('js', 'practice');
+
+    function updateCount(){
+      countEl.textContent = document.querySelectorAll('.phrase-card.open').length;
+    }
+    function reveal(card){
+      var open = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', open ? 'true' : 'false');
+      updateCount();
+      if (open && !started) {
+        started = true;
+        if (typeof gtag === 'function') gtag('event', 'practice_start', { source_page: 'phrases' });
+      }
+    }
+    cards.forEach(function(card){
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-expanded', 'false');
+      card.addEventListener('click', function(){ if (body.classList.contains('practice')) reveal(card); });
+      card.addEventListener('keydown', function(e){
+        if (!body.classList.contains('practice')) return;
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(card); }
+      });
+    });
+    toggle.addEventListener('click', function(){
+      var practicing = body.classList.toggle('practice');
+      cards.forEach(function(card){
+        card.classList.remove('open');
+        card.setAttribute('aria-expanded', 'false');
+        if (practicing) { card.setAttribute('role', 'button'); card.setAttribute('tabindex', '0'); }
+        else { card.removeAttribute('role'); card.removeAttribute('tabindex'); card.removeAttribute('aria-expanded'); }
+      });
+      toggle.textContent = practicing ? '答えを全部見る' : '答えをかくして練習する';
+      countEl.parentNode.style.visibility = practicing ? 'visible' : 'hidden';
+      updateCount();
+    });
+  })();
+
   document.querySelectorAll('[data-cta]').forEach(function(el){
     el.addEventListener('click', function(){
       if (typeof gtag === 'function') {
