@@ -173,3 +173,35 @@ footer{background:var(--navy-d); color:#a9b5ab; margin-top:60px; padding:28px 0;
   .topic-hd .stamp{width:62px; height:62px; font-size:21px}
   .topic-hd h2{font-size:20px}
 }
+
+/* 5つのテーマ（流れ） */
+.flow{margin:10px 0 30px; scroll-margin-top:12px}
+.flow-ttl{margin:0 0 16px; font-family:"Noto Serif JP",serif; font-weight:700; color:var(--navy); font-size:20px}
+.flow-ttl small{display:block; font-family:"Noto Sans JP",sans-serif; font-weight:400; font-size:13px; color:var(--muted); margin-top:2px}
+.flow-row{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(5,1fr); position:relative}
+.flow-row::before{content:""; position:absolute; left:10%; right:10%; top:36px; border-top:2px dashed #d9c9b0; z-index:0}
+.flow-row li{margin:0; position:relative; z-index:1}
+.flow-row a{display:flex; flex-direction:column; align-items:center; text-decoration:none; color:var(--ink)}
+.flow-row .stamp{width:72px; height:72px; font-size:23px; position:relative; transition:transform .15s}
+.flow-row a:hover .stamp{transform:translateY(-3px)}
+.flow-row .n{position:relative; top:-12px; width:24px; height:24px; border-radius:50%; background:var(--navy); color:#fff; font-size:13px; font-weight:700; display:flex; align-items:center; justify-content:center; border:2px solid #fff}
+.flow-row .lb{margin-top:-4px; font-size:14px; font-weight:700; line-height:1.5; text-align:center; color:var(--navy)}
+/* 共通のルール */
+.rule{border-radius:12px; background:var(--navy); color:#fff; padding:20px 22px 12px; margin:0 0 10px; scroll-margin-top:12px}
+.rule-ttl{margin:0 0 12px; font-weight:700; color:var(--gold-l); font-size:15px; letter-spacing:.04em}
+.rule-row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.rule-item{display:flex; gap:12px; align-items:center; background:rgba(255,255,255,.08); border-radius:10px; padding:12px 14px}
+.rule-item b{flex:none; width:36px; height:36px; border-radius:50%; background:var(--gold-l); color:var(--navy-d); display:flex; align-items:center; justify-content:center; font-size:18px}
+.rule-item p{margin:0; line-height:1.6; font-size:14.5px; color:#dfe6e0}
+.rule-item strong{background:none; color:#fff; font-size:17px}
+.rule .note{color:#b9c6bc; margin:10px 0 0}
+@media(max-width:600px){
+  .flow-row{grid-template-columns:1fr; gap:6px}
+  .flow-row::before{left:31px; right:auto; top:30px; bottom:30px; border-top:0; border-left:2px dashed #d9c9b0}
+  .flow-row a{flex-direction:row; gap:14px; padding:4px 0}
+  .flow-row .stamp{width:62px; height:62px; font-size:20px}
+  .flow-row .n{position:absolute; left:46px; top:-4px}
+  .flow-row .lb{margin:0; text-align:left; font-size:16px}
+  .flow-row .lb br{display:none}
+  .rule-row{grid-template-columns:1fr}
+}
