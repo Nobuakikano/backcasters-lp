@@ -209,3 +209,6 @@ footer{background:var(--navy-d); color:#a9b5ab; margin-top:60px; padding:28px 0;
   .flow-row .lb br{display:none}
   .rule-row{grid-template-columns:1fr}
 }
+
+.ft .sns a{display:inline-block; border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:3px 12px; margin:4px 6px 4px 0; color:#d3dbd4}
+.ft .sns a:hover{border-color:var(--gold-l); text-decoration:none}
