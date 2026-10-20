@@ -153,7 +153,11 @@ footer{background:var(--navy-d); color:#a9b5ab; margin-top:60px; padding:28px 0;
 .read:hover{border-color:var(--gold); border-left-color:var(--gold)}
 .read b{display:block; color:var(--navy); font-size:18px; line-height:1.6}
 .read span{display:block; font-size:14.5px; color:var(--muted); line-height:1.75; margin:2px 0 6px}
-.read i{font-style:normal; font-size:14px; font-weight:700; color:var(--navy)}
+.read i{display:inline-flex; align-items:center; gap:9px; font-style:normal; font-size:14px; font-weight:700; letter-spacing:.08em; color:#fff; background:var(--navy); padding:7px 8px 7px 14px; border-radius:999px; margin-top:2px; transition:background .15s}
+.read i::before{content:""; width:17px; height:17px; flex:none; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 5.5C4.5 4 8 4 12 6c4-2 7.5-2 10-.5V19c-2.5-1.5-6-1.5-10 .5-4-2-7.5-2-10-.5z'/%3E%3Cpath d='M12 6v13.5'/%3E%3C/svg%3E") no-repeat center/contain}
+.read i::after{content:"\203A"; width:22px; height:22px; border-radius:50%; background:var(--gold-l); color:var(--navy-d); display:flex; align-items:center; justify-content:center; font-size:18px; line-height:1; padding-bottom:2px; box-sizing:border-box; transition:transform .15s}
+.read:hover i{background:var(--gold)}
+.read:hover i::after{transform:translateX(3px)}
 .dl{border:1px solid var(--line); border-radius:10px; padding:14px 18px 6px; margin:0 0 16px; background:#fffdf8}
 .dl-ttl{margin:0 0 6px; font-weight:700; color:var(--stamp); font-size:14px; letter-spacing:.1em}
 .dl dl{margin:0}
