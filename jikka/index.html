@@ -16,31 +16,31 @@
 
 <!-- ══════════════════════════════════════════════════════════════
      ▼▼▼ ここだけ編集してください ▼▼▼
-     提携が承認されたら、url の "#" をA8の広告リンクに差し替えます。
+     提携が承認されたら、url の "#" をA8の広告リンクに差し替え、imp に同じ a8mat の 0.gif（計測タグ）を入れます。
      "#" のままのサービスは、ページに表示されません。
      ══════════════════════════════════════════════════════════════ -->
 <script>
 var SOUDAN_LINKS = {
   hakajimai: [
-    { name: "墓石ナビ（墓石の一括見積もり）",            url: "#" },  // A8 未申請
-    { name: "わたしたちの墓じまい（墓じまい代行）",      url: "#" }   // A8 未申請
+    { name: "墓石ナビ（墓石の一括見積もり）",            url: "#" },  // A8 申請中（2026-10-20）
+    { name: "わたしたちの墓じまい（墓じまい代行）",      url: "#" }   // A8 申請中（2026-10-20）
   ],
   fudosan: [
-    { name: "不動産SHOPナカジツ（売却査定）",            url: "#" },  // A8 未申請 ※対応エリアを要確認
-    { name: "ラクウル（相続した家・空き家の買取）",      url: "#" },  // A8 未申請
+    { name: "不動産SHOPナカジツ（売却査定）",            url: "#" },  // A8 申請中（2026-10-20） ※対応エリアを要確認
+    { name: "ラクウル（相続した家・空き家の買取）",      url: "#" },  // A8 申請中（2026-10-20）
     { name: "ゼロチュー売却（仲介手数料無料の売却）",    url: "#" }   // A8 未申請
   ],
   ihin: [
-    { name: "遺品整理110番（業者紹介）",                 url: "#" },  // A8 未申請
+    { name: "遺品整理110番（業者紹介・見積無料）",    url: "https://px.a8.net/svt/ejp?a8mat=4BEL1K+1U380I+39GM+5MFLEA", imp: "https://www18.a8.net/0.gif?a8mat=4BEL1K+1U380I+39GM+5MFLEA" },  // ★2026-10-20 提携承認（素材001）
     { name: "バイセル（遺品整理の買取）",                url: "#" }   // A8 未申請
   ],
   kaigo: [
-    { name: "いい介護（老人ホーム探し）",                url: "#" },  // A8 未申請
-    { name: "みんなの介護（老人ホーム探し）",            url: "#" },  // A8 未申請
-    { name: "おやとこ（家族信託）",                      url: "#" }   // A8 未申請
+    { name: "いい介護（老人ホーム探し）",                url: "#" },  // A8 申請中（2026-10-20）
+    { name: "みんなの介護（老人ホーム探し）",            url: "#" },  // A8 申請中（2026-10-20）
+    { name: "おやとこ（家族信託）",                      url: "#" }   // A8 申請中（2026-10-20）
   ],
   souzoku: [
-    { name: "nocos（相続手続き）",                       url: "#" },  // A8 未申請
+    { name: "nocos（相続手続き）",                       url: "#" },  // A8 申請中（2026-10-20）
     { name: "税理士紹介エージェント（相続税申告）",      url: "#" }   // A8 未申請
   ]
 };
@@ -196,6 +196,12 @@ var SOUDAN_LINKS = {
         try { gtag('event', 'soudan_click', { soudan_category: this.getAttribute('data-cat'), soudan_name: this.textContent }); } catch(e) {}
       });
       boxes[i].appendChild(a);
+      if (list[j].imp) {
+        var px = document.createElement('img');
+        px.src = list[j].imp; px.width = 1; px.height = 1; px.alt = '';
+        px.style.cssText = 'position:absolute;width:1px;height:1px;opacity:0';
+        boxes[i].appendChild(px);
+      }
     }
   }
 })();
