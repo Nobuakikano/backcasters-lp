@@ -363,6 +363,17 @@ footer a:hover{text-decoration:underline}
   .detail{padding:24px 18px}
   .hd-cta{padding:8px 12px;font-size:12px}
 }
+
+/* ── 写真（2026-10 追加） ── */
+.photo{margin:0}
+.photo img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;
+  border-radius:var(--radius);display:block;background:var(--brass-soft)}
+.photo .msg{font-family:"Noto Serif JP",serif;font-weight:600;color:var(--navy);
+  font-size:19px;line-height:1.7;margin:14px 0 2px}
+.photo .credit{font-size:12px;color:var(--ink-soft);margin:0}
+.photoband{background:var(--bg);padding:38px 0 6px}
+.photo-in{margin:30px 0 4px}
+@media(max-width:600px){.photo .msg{font-size:17px}}
 </style>
 </head>
 <body>
@@ -390,6 +401,18 @@ footer a:hover{text-decoration:underline}
     <a href="#picks" class="hero-cta">目的別のおすすめを見る</a>
   </div>
 </div>
+
+<!-- ═══ 写真バンド（スロット1） ═══ -->
+<section class="photoband">
+  <div class="wrap">
+    <figure class="photo">
+      <img src="/english/hero.jpg" width="1200" height="800"
+           style="object-position:center 40%" alt="" loading="eager" decoding="async">
+      <p class="msg">やる気が切れたのではなく、気づく人がいなかった。</p>
+      <p class="credit">写真はイメージです。（Adobe Stock）</p>
+    </figure>
+  </div>
+</section>
 
 <!-- ═══ データで見る挫折の構造 ═══ -->
 <section id="data" style="background:#fff;border-bottom:1px solid var(--line)">
@@ -448,6 +471,13 @@ footer a:hover{text-decoration:underline}
       </div>
       <div class="outcome">コーチング型のサービスが数十万円するのは、レッスンではなく<strong>この「止まりかけを検知して立て直す仕組み」</strong>に対する対価です。自力で続けられる人にとっては割高であり、逆に何度も止まってきた人にとっては、ここが唯一の解決策になります。</div>
     </div>
+
+    <figure class="photo photo-in">
+      <img src="/english/bansou.jpg" width="1200" height="800"
+           style="object-position:center 45%" alt="" loading="lazy" decoding="async">
+      <p class="msg">週に一度、他人の目が入るだけで止まらなくなる。</p>
+      <p class="credit">写真はイメージです。（Adobe Stock）</p>
+    </figure>
 
   </div>
 </section>
@@ -890,6 +920,11 @@ footer a:hover{text-decoration:underline}
     <div class="sec-label">FREE</div>
     <h2>比較の前に、いまの位置を確かめる</h2>
     <p class="lead">どのスクールが合うかは、いまどこでつまずいているかで決まります。ビジネスの現場で使う瞬間英作文80フレーズを無料で公開しています。日本語を見て1〜2秒で英語が出るか。ここを確かめてから選ぶと、判断がぶれません。英語はかくれていて、タップすると答えが出ます。</p>
+    <figure class="photo photo-in">
+      <img src="/english/phrases.jpg" width="1200" height="800"
+           style="object-position:center 50%" alt="" loading="lazy" decoding="async">
+      <p class="credit">写真はイメージです。（Adobe Stock）</p>
+    </figure>
     <p><a href="/phrases" style="display:inline-block;padding:13px 26px;border:1px solid var(--navy);border-radius:8px;color:var(--navy);font-weight:700;font-size:15px;text-decoration:none">瞬間英作文 80フレーズ集で試す（無料・登録不要）</a></p>
     <p style="margin-top:14px;font-size:14px">新しい瞬間英作文は、毎日YouTubeで出しています。<a href="https://www.youtube.com/@hitoriyaranai" target="_blank" rel="noopener" style="color:var(--navy);font-weight:700">YouTubeで見る</a></p>
   </div>
