@@ -60,7 +60,7 @@ var SOUDAN_LINKS = {
 <script type="application/ld+json">
 {"@context": "https://schema.org","@type": "WebSite","name": "ひとりでやらない実家じまい","url": "https://backcasters.com/jikka/","inLanguage": "ja"}
 </script>
-<link rel="stylesheet" href="/jikka/style.css?v=5">
+<link rel="stylesheet" href="/jikka/style.css?v=6">
 </head>
 <body>
 
@@ -68,7 +68,7 @@ var SOUDAN_LINKS = {
 <header>
   <div class="hd">
     <a class="logo" href="/jikka/"><span>ひとりでやらない</span>実家じまい</a>
-    <a class="hd-cta" href="#soudan">相談先を選ぶ</a>
+    <a class="hd-cta" href="#topics">テーマから探す</a>
   </div>
 </header>
 
@@ -82,76 +82,105 @@ var SOUDAN_LINKS = {
     <p class="lede">50代になると、親と実家のことを考えなければいけない機会が順番にやってきます。どれも一生に一度か二度の決断で、金額は数十万円から数百万円。このサイトでは、かかる<strong>実際の費用</strong>を計算してお見せします。</p>
   </section>
 
-  <h2>記事</h2>
-  <div class="cards">
-    <a class="card" href="/jikka/uru-kasu-oku/"><em>実家</em><b>相続した実家、売る・貸す・置いておく</b><span>一度貸すと、売るときの3,000万円控除が使えなくなる。仮の例で約462万円の差。</span></a>
-    <a class="card" href="/jikka/hakajimai-hiyou/"><em>お墓</em><b>墓じまいは結局いくら？</b><span>総額 ＝ 片付ける費用 ＋ 次の行き先の費用。差はほとんど行き先で決まる。</span></a>
-    <a class="card" href="/jikka/kaigo-hiyou/"><em>介護</em><b>親の介護、総額はいくら？</b><span>平均どうしで約542万円、施設なら約806万円。見学で聞くことも。</span></a>
-    <a class="card" href="/jikka/ihin-seiri/"><em>遺品</em><b>実家の遺品整理、費用は「作業費 − 買取額」</b><span>見積もりの倍を払った例も。業者に必要な許可と、相続放棄との関係。</span></a>
-    <a class="card" href="/jikka/souzokuzei/"><em>相続</em><b>相続税、うちはかかる？</b><span>かかるのは10人に1人。ただし0円になる特例は、申告しないと使えない。</span></a>
+  <nav class="topics" id="topics" aria-label="テーマから探す">
+    <p class="topics-ttl">テーマから探す</p>
+    <div class="topics-row">
+      <a href="#t-kaigo"><em class="stamp">介護</em><span>1</span></a>
+      <a href="#t-souzoku"><em class="stamp">相続</em><span>2</span></a>
+      <a href="#t-ihin"><em class="stamp">遺品</em><span>3</span></a>
+      <a href="#t-jikka"><em class="stamp">実家</em><span>4</span></a>
+      <a href="#t-ohaka"><em class="stamp">お墓</em><span>5</span></a>
+    </div>
+    <p class="note">起きることが多い順に並べています。家によって順番は前後します。</p>
+  </nav>
+
+  <div class="box common" id="soudan">
+    <p><strong>どのテーマでも、相談先は1社で決めずに2〜3社を比べてください。</strong>そして、総額と、追加で払う条件を先に聞くこと。各テーマの「相談先」に、確認することをまとめています。</p>
   </div>
 
-  <h2>どこから手をつけるか</h2>
-  <p>順番に決まりはありませんが、<strong>期限があるものから</strong>確かめるのがおすすめです。</p>
-  <div class="tbl"><table>
-    <tr><th>期限</th><th>中身</th></tr>
-    <tr><td>相続を知ってから3か月</td><td>相続放棄をするかどうか（借金がありそうなら、遺品を片付ける前に）</td></tr>
-    <tr><td>相続を知った日の翌日から10か月</td><td>相続税の申告（特例で0円になる場合も必要）</td></tr>
-    <tr><td>2027年3月31日</td><td><b>親の代の名義のままの家の名義変更（相続登記）</b><br>2024年4月から、相続した不動産の名義変更が義務になりました。それより前に相続して名義を変えていない家も対象で、猶予の期限がこの日です。正当な理由なく放っておくと、10万円以下の過料の対象になります。<a href="/jikka/uru-kasu-oku/">くわしく</a></td></tr>
-    <tr><td>2027年12月31日</td><td><b>相続した空き家を売るときの税金の特例</b><br>親が一人で住んでいた家を相続して売ると、売って出た利益から最大3,000万円を差し引ける特例があります。期限付きの制度で、今の法律ではこの日までの売却が対象です。延長は国が要望中ですが、まだ決まっていません。<a href="/jikka/uru-kasu-oku/">くわしく</a></td></tr>
-  </table></div>
-  <p class="note">いずれも一般的な目安です。個別の期限は専門家または窓口でご確認ください。</p>
+  <section class="topic" id="t-kaigo">
+    <div class="topic-hd"><em class="stamp">介護</em><div><span class="num">1</span><h2>親の介護が始まったら</h2></div></div>
+    <a class="read" href="/jikka/kaigo-hiyou/"><b>親の介護、総額はいくら？</b><span>平均どうしで約542万円、施設なら約806万円。見学で聞くことも。</span><i>記事を読む →</i></a>
+    <div class="svc">
+      <h3>相談先：老人ホーム探し・親のお金の管理</h3>
+      <ul>
+        <li>資料を取り寄せたら、<strong>2〜3か所を見学</strong>してから決める</li>
+        <li>月額に含まれない費用と、入居一時金の戻り方を聞く</li>
+        <li>親の判断能力が低下する前に、お金を動かせる準備を相談しておく</li>
+      </ul>
+      <div class="links" data-cat="kaigo"></div>
+    </div>
+  </section>
 
-  <h2 id="soudan">相談先の選び方</h2>
-  <p>相談先を選ぶときに、どの分野でも共通して言えることは2つです。<strong>1社で決めずに2〜3社を比べること</strong>、そして<strong>総額と、追加で払う条件を先に聞くこと</strong>です。</p>
+  <section class="topic" id="t-souzoku">
+    <div class="topic-hd"><em class="stamp">相続</em><div><span class="num">2</span><h2>親が亡くなったら（相続）</h2></div></div>
+    <a class="read" href="/jikka/souzokuzei/"><b>相続税、うちはかかる？</b><span>かかるのは10人に1人。ただし0円になる特例は、申告しないと使えない。</span><i>記事を読む →</i></a>
+    <div class="dl">
+      <p class="dl-ttl">期限</p>
+      <dl>
+        <dt>相続を知ってから3か月</dt><dd>相続放棄をするかどうか。借金がありそうなら、遺品を片付ける前に専門家へ</dd>
+        <dt>相続を知った日の翌日から10か月</dt><dd>相続税の申告。特例で税金が0円になる場合も、申告が必要</dd>
+      </dl>
+    </div>
+    <div class="svc">
+      <h3>相談先：相続手続き・相続税</h3>
+      <ul>
+        <li>相続税がかからない家は、手続きの代行や司法書士で足りることが多い</li>
+        <li>特例を使う家・基礎控除の前後の家は、<strong>相続税の申告に慣れた税理士</strong>へ</li>
+      </ul>
+      <div class="links" data-cat="souzoku"></div>
+    </div>
+  </section>
 
-  <div class="svc">
-    <h3>墓じまい・墓石</h3>
-    <ul>
-      <li>撤去費は墓地の条件で変わる。<strong>現地を見たうえでの見積もり</strong>を複数取る</li>
-      <li>新しい納骨先の費用が「遺骨1人分」か「全員分」かを確かめる</li>
-    </ul>
-    <div class="links" data-cat="hakajimai"></div>
-  </div>
+  <section class="topic" id="t-ihin">
+    <div class="topic-hd"><em class="stamp">遺品</em><div><span class="num">3</span><h2>家の中を片付ける</h2></div></div>
+    <a class="read" href="/jikka/ihin-seiri/"><b>実家の遺品整理、費用は「作業費 − 買取額」</b><span>見積もりの倍を払った例も。業者に必要な許可と、相続放棄との関係。</span><i>記事を読む →</i></a>
+    <div class="svc">
+      <h3>相談先：遺品整理・買取</h3>
+      <ul>
+        <li>家を見てもらったうえで見積もり。追加料金の条件とキャンセル料を確認</li>
+        <li>ごみの運搬を誰がどの許可で行うかを聞く</li>
+        <li>値のつきそうな物は、先に専門の買取業者に見てもらう</li>
+      </ul>
+      <div class="links" data-cat="ihin"></div>
+    </div>
+  </section>
 
-  <div class="svc">
-    <h3>実家の売却査定</h3>
-    <ul>
-      <li>査定額は会社によって差が出る。<strong>複数社に頼んで相場の幅</strong>をつかむ</li>
-      <li>高い査定額だけで選ばない。「その値段で売れた事例」を聞く</li>
-      <li>3,000万円控除を使う予定なら、その要件に詳しいかを聞く</li>
-    </ul>
-    <div class="links" data-cat="fudosan"></div>
-  </div>
+  <section class="topic" id="t-jikka">
+    <div class="topic-hd"><em class="stamp">実家</em><div><span class="num">4</span><h2>家をどうするか</h2></div></div>
+    <a class="read" href="/jikka/uru-kasu-oku/"><b>相続した実家、売る・貸す・置いておく</b><span>一度貸すと、売るときの3,000万円控除が使えなくなる。仮の例で約462万円の差。</span><i>記事を読む →</i></a>
+    <div class="dl">
+      <p class="dl-ttl">期限</p>
+      <dl>
+        <dt>2027年3月31日</dt><dd><b>親の代の名義のままの家の名義変更（相続登記）</b><br>2024年4月から、相続した不動産の名義変更が義務になりました。それより前に相続して名義を変えていない家も対象で、猶予の期限がこの日です。正当な理由なく放っておくと、10万円以下の過料の対象になります。</dd>
+        <dt>2027年12月31日</dt><dd><b>相続した空き家を売るときの税金の特例</b><br>親が一人で住んでいた家を相続して売ると、売って出た利益から最大3,000万円を差し引ける特例があります。期限付きの制度で、今の法律ではこの日までの売却が対象です。延長は国が要望中ですが、まだ決まっていません。</dd>
+      </dl>
+    </div>
+    <div class="svc">
+      <h3>相談先：実家の売却査定</h3>
+      <ul>
+        <li>査定額は会社によって差が出る。<strong>複数社に頼んで相場の幅</strong>をつかむ</li>
+        <li>高い査定額だけで選ばない。「その値段で売れた事例」を聞く</li>
+        <li>3,000万円控除を使う予定なら、その要件に詳しいかを聞く</li>
+      </ul>
+      <div class="links" data-cat="fudosan"></div>
+    </div>
+  </section>
 
-  <div class="svc">
-    <h3>遺品整理・買取</h3>
-    <ul>
-      <li>家を見てもらったうえで見積もり。追加料金の条件とキャンセル料を確認</li>
-      <li>ごみの運搬を誰がどの許可で行うかを聞く</li>
-      <li>値のつきそうな物は、先に専門の買取業者に見てもらう</li>
-    </ul>
-    <div class="links" data-cat="ihin"></div>
-  </div>
+  <section class="topic" id="t-ohaka">
+    <div class="topic-hd"><em class="stamp">お墓</em><div><span class="num">5</span><h2>お墓をどうするか</h2></div></div>
+    <a class="read" href="/jikka/hakajimai-hiyou/"><b>墓じまいは結局いくら？</b><span>総額 ＝ 片付ける費用 ＋ 次の行き先の費用。差はほとんど行き先で決まる。</span><i>記事を読む →</i></a>
+    <div class="svc">
+      <h3>相談先：墓じまい・墓石</h3>
+      <ul>
+        <li>撤去費は墓地の条件で変わる。<strong>現地を見たうえでの見積もり</strong>を複数取る</li>
+        <li>新しい納骨先の費用が「遺骨1人分」か「全員分」かを確かめる</li>
+      </ul>
+      <div class="links" data-cat="hakajimai"></div>
+    </div>
+  </section>
 
-  <div class="svc">
-    <h3>老人ホーム探し・親のお金の管理</h3>
-    <ul>
-      <li>資料を取り寄せたら、<strong>2〜3か所を見学</strong>してから決める</li>
-      <li>月額に含まれない費用と、入居一時金の戻り方を聞く</li>
-      <li>親の判断能力が低下する前に、お金を動かせる準備を相談しておく</li>
-    </ul>
-    <div class="links" data-cat="kaigo"></div>
-  </div>
-
-  <div class="svc">
-    <h3>相続手続き・相続税</h3>
-    <ul>
-      <li>相続税がかからない家は、手続きの代行や司法書士で足りることが多い</li>
-      <li>特例を使う家・基礎控除の前後の家は、<strong>相続税の申告に慣れた税理士</strong>へ</li>
-    </ul>
-    <div class="links" data-cat="souzoku"></div>
-  </div>
+  <p class="note">期限はいずれも一般的な目安です。個別の期限は専門家または窓口でご確認ください。</p>
 
   <h2>運営について</h2>
   <p>このサイトは、お金の計算と金融サービスの設計を長く仕事にしてきた運営者が書いています。自分自身も、親と実家のことを考える年代になりました。サービスの申込で報酬を受け取ることがありますが、<strong>報酬の有無で金額の書き方や結論は変えません。</strong></p>
