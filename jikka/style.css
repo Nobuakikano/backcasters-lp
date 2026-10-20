@@ -107,3 +107,10 @@ footer{background:var(--navy-d); color:#a9b5ab; margin-top:60px; padding:28px 0;
   th,td{padding:8px 9px}
   .ft{flex-direction:column; align-items:flex-start}
 }
+/* ページ写真 */
+.photo{margin:18px 0 26px}
+.photo img{width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; border-radius:10px; display:block; background:var(--soft)}
+.photo .msg{font-family:"Noto Serif JP",serif; font-weight:600; color:var(--navy); font-size:19px; line-height:1.7; margin:14px 0 2px}
+.photo .credit{font-size:12px; color:var(--muted); margin:0}
+.photo .credit a{color:var(--muted)}
+@media(max-width:600px){ .photo .msg{font-size:17px} }
