@@ -60,14 +60,14 @@ var SOUDAN_LINKS = {
 <script type="application/ld+json">
 {"@context": "https://schema.org","@type": "WebSite","name": "ひとりでやらない実家じまい","url": "https://backcasters.com/jikka/","inLanguage": "ja"}
 </script>
-<link rel="stylesheet" href="/jikka/style.css?v=2">
+<link rel="stylesheet" href="/jikka/style.css?v=3">
 </head>
 <body>
 
 <div class="pr-bar">本サイトはプロモーションを含みます。相談先として紹介するサービスへのリンクには広告が含まれることがあります。</div>
 <header>
   <div class="hd">
-    <a class="logo" href="/jikka/">ひとりでやらない実家じまい</a>
+    <a class="logo" href="/jikka/"><span>ひとりでやらない</span>実家じまい</a>
     <a class="hd-cta" href="#soudan">相談先を選ぶ</a>
   </div>
 </header>
@@ -191,6 +191,10 @@ var SOUDAN_LINKS = {
       a.target = '_blank';
       a.rel = 'nofollow sponsored noopener';
       a.textContent = list[j].name + '【PR】';
+      a.setAttribute('data-cat', boxes[i].getAttribute('data-cat'));
+      a.addEventListener('click', function(){
+        try { gtag('event', 'soudan_click', { soudan_category: this.getAttribute('data-cat'), soudan_name: this.textContent }); } catch(e) {}
+      });
       boxes[i].appendChild(a);
     }
   }
