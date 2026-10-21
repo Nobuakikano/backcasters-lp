@@ -222,24 +222,24 @@ h1 em{font-style:normal;color:#e8c583;border-bottom:2px solid rgba(232,197,131,.
 .src{font-size:12px;color:#79838f;margin-top:6px}
 
 /* ── フロー図（ひとり／伴走） ── */
-.flow{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;margin-top:22px}
-.flow+.flow{margin-top:16px}
-.flow-hd{display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.flow-dot{width:10px;height:10px;border-radius:50%;flex:none}
-.flow-title{font-family:"Noto Serif JP",serif;font-size:17px;font-weight:700}
-.steps{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px}
-.step{flex:1 1 130px;min-width:0;border:1px solid var(--line);border-radius:8px;padding:12px 13px;font-size:13.5px;line-height:1.6;background:#fdfcfa}
-.step b{display:block;font-size:11px;letter-spacing:.08em;margin-bottom:4px;font-weight:700}
-.arw{align-self:center;color:#b9c0c8;font-size:15px;flex:none}
-.flow.solo .step{border-color:#dfe3e7;background:#f7f8f9;color:#5c6570}
-.flow.solo .step b{color:var(--muted-mark)}
-.flow.solo .step.end{border-color:#cfd5db;background:#eef0f2}
-.loopback{margin-top:14px;border-top:1px dashed #c9ced4;padding-top:11px;font-size:13px;color:#6b7480;display:flex;align-items:flex-start;gap:8px}
-.loopback>span:first-child{font-size:16px;line-height:1.4;flex:none;color:var(--muted-mark)}
-.flow.guided .step{border-color:#dfe7ef;background:#f6f9fc}
-.flow.guided .step b{color:var(--s1)}
-.flow.guided .step.end{border-color:var(--s1);background:#eaf2fa;color:var(--s1);font-weight:700}
-.outcome{margin-top:14px;border-top:1px solid #e3e9ef;padding-top:11px;font-size:13px;color:#3a4552}
+.vs{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-top:22px}
+.vs-row{display:grid;grid-template-columns:118px repeat(4,minmax(0,1fr)) 144px;gap:10px;align-items:stretch}
+.vs-row+.vs-row{margin-top:12px}
+.vs-who{display:flex;align-items:center;white-space:nowrap;padding-right:6px;font-family:"Noto Serif JP",serif;font-weight:700;font-size:15px}
+.vs-s{position:relative;display:flex;align-items:center;gap:8px;padding:12px 10px;white-space:nowrap;border-radius:8px;font-size:13.5px;font-weight:600;line-height:1.4}
+.vs-s i{flex:none;width:18px;height:18px;border-radius:50%;font-style:normal;font-size:11px;display:grid;place-items:center;color:#fff}
+.vs-end{display:flex;align-items:center;justify-content:center;white-space:nowrap;border-radius:8px;font-size:16px;font-weight:700;text-align:center;padding:12px}
+.vs-row.solo .vs-who{color:#6b7480}
+.vs-row.solo .vs-s{background:#f3f4f6;color:#5c6570}
+.vs-row.solo .vs-s i{background:var(--muted-mark)}
+.vs-row.solo .vs-end{background:#e4e7eb;color:#4a525c}
+.vs-row.guided .vs-who{color:var(--s1)}
+.vs-row.guided .vs-s{background:#eef4fa;color:#1f3f60}
+.vs-row.guided .vs-s i{background:var(--s1)}
+.vs-row.guided .vs-end{background:var(--s1);color:#fff}
+.vs-note{margin-top:16px;padding-top:12px;border-top:1px dashed #d5d9de;font-size:13px;color:#5c6570;line-height:1.7}
+.vs-note strong{color:var(--s1)}
+@media(max-width:860px){.vs-row{grid-template-columns:1fr 1fr;gap:8px}.vs-who,.vs-end{grid-column:1/-1}.vs-row+.vs-row{margin-top:20px}}
 
 /* ── 横棒グラフ ── */
 .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;margin-bottom:26px}
@@ -269,8 +269,12 @@ h1 em{font-style:normal;color:#e8c583;border-bottom:2px solid rgba(232,197,131,.
   .bar-name{grid-area:name}.bar-track{grid-area:track}.bar-val{grid-area:val}
   .bar-row[data-note]::after{left:0}
   .stat-num{font-size:38px}
-  .arw{display:none}
-  .step{flex:1 1 100%}
+  .vs{padding:18px 16px}
+  .vs-row{grid-template-columns:1fr 1fr;gap:8px}
+  .vs-s{font-size:13px;padding:11px 10px;gap:6px}
+  .vs-who{grid-column:1/-1}
+  .vs-end{grid-column:1/-1}
+  .vs-row+.vs-row{margin-top:20px}
 }
 
 /* ── セクション共通 ── */
@@ -435,36 +439,24 @@ footer a:hover{text-decoration:underline}
     </div>
     <p class="src">出典：ビズメイツ株式会社「英語学習の挫折に関する実態調査」（2021年5月実施・英語学習経験のある社会人111名・複数回答）</p>
 
-    <div class="flow solo">
-      <div class="flow-hd"><span class="flow-dot" style="background:var(--muted-mark)"></span><span class="flow-title">ひとりで学ぶと、こうなる</span></div>
-      <div class="steps">
-        <div class="step"><b>STEP 1</b>教材やアプリを買い、計画を立てる</div>
-        <span class="arw">▶</span>
-        <div class="step"><b>STEP 2</b>最初の2週間は順調に進む</div>
-        <span class="arw">▶</span>
-        <div class="step"><b>STEP 3</b>繁忙期に入り、間隔が空きはじめる</div>
-        <span class="arw">▶</span>
-        <div class="step"><b>STEP 4</b>止まったことに、誰も気づかない</div>
-        <span class="arw">▶</span>
-        <div class="step end"><b>3ヶ月以内</b>そのまま、やめる</div>
+    <div class="vs">
+      <div class="vs-row solo">
+        <div class="vs-who">ひとりだと</div>
+        <div class="vs-s"><i>1</i>教材を買う</div>
+        <div class="vs-s"><i>2</i>2週間は順調</div>
+        <div class="vs-s"><i>3</i>忙しくて中断</div>
+        <div class="vs-s"><i>4</i>誰も気づかない</div>
+        <div class="vs-end">3ヶ月でやめる</div>
       </div>
-      <div class="loopback"><span>↩</span><span>半年後、また別の教材を買って同じ道をたどる。英語学習の経験がある社会人の67.6%が、挫折は「何度もある」と回答しています。</span></div>
-    </div>
-
-    <div class="flow guided">
-      <div class="flow-hd"><span class="flow-dot" style="background:var(--s1)"></span><span class="flow-title">伴走者がつくと、何が変わるか</span></div>
-      <div class="steps">
-        <div class="step"><b>STEP 1</b>現在地を診断し、計画を作ってもらう</div>
-        <span class="arw">▶</span>
-        <div class="step"><b>STEP 2</b>週1回の面談で進捗を報告する</div>
-        <span class="arw">▶</span>
-        <div class="step"><b>STEP 3</b>止まりかけを、他人が先に検知する</div>
-        <span class="arw">▶</span>
-        <div class="step"><b>STEP 4</b>生活に合わせて計画を作り直す</div>
-        <span class="arw">▶</span>
-        <div class="step end"><b>結果</b>止まらずに続く</div>
+      <div class="vs-row guided">
+        <div class="vs-who">伴走者がいると</div>
+        <div class="vs-s"><i>1</i>計画を作る</div>
+        <div class="vs-s"><i>2</i>週1で報告</div>
+        <div class="vs-s"><i>3</i>中断を先に察知</div>
+        <div class="vs-s"><i>4</i>計画を修正</div>
+        <div class="vs-end">止まらず続く</div>
       </div>
-      <div class="outcome">コーチング型のサービスが数十万円するのは、レッスンではなく<strong>この「止まりかけを検知して立て直す仕組み」</strong>に対する対価です。自力で続けられる人にとっては割高であり、逆に何度も止まってきた人にとっては、ここが唯一の解決策になります。</div>
+      <p class="vs-note">英語学習経験のある社会人の67.6%が「挫折は何度もある」と回答。コーチング型の料金は、この<strong>「察知して立て直す仕組み」</strong>への対価です。</p>
     </div>
 
     <figure class="photo photo-in">
