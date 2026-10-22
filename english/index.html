@@ -191,13 +191,15 @@ header{background:var(--navy);position:sticky;top:0;z-index:50;box-shadow:0 1px 
 .hd-cta:hover{background:#946f31}
 
 /* ── ヒーロー ── */
-.hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:56px 0;position:relative;overflow:hidden}
-.hero-in{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
-.hero h1{font-size:clamp(26px,3.6vw,40px);line-height:1.6;white-space:nowrap}
-.hero-photo{margin:0}
-.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:35% 45%;border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.35)}
-@media(max-width:760px){.hero-in{grid-template-columns:1fr;gap:24px}.hero-photo img{aspect-ratio:3/2}}
-.hero-photo figcaption{margin-top:8px;font-size:11px;color:#8d9bb0;text-align:right}
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center}
+.hero-in{width:100%}
+.hero h1{font-size:clamp(26px,3.6vw,40px);line-height:1.6;white-space:nowrap;text-shadow:0 2px 16px rgba(0,0,0,.45)}
+.hero-copy{position:relative;z-index:1;margin-left:auto;width:max-content;padding:80px 0}
+.hero-photo{position:absolute;inset:0;margin:0;z-index:0}
+.hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,35,64,0) 25%,rgba(15,35,64,.6) 52%,rgba(15,35,64,.92) 75%)}
+.hero-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:30% 50%}
+@media(max-width:760px){.hero{min-height:440px;align-items:flex-end}.hero-photo img{object-position:28% 50%}.hero-photo::after{background:linear-gradient(180deg,rgba(15,35,64,0) 30%,rgba(15,35,64,.75) 62%,rgba(15,35,64,.95) 100%)}.hero-copy{margin-left:0;width:auto;padding:0 0 40px}.hero-photo figcaption{top:10px;bottom:auto}}
+.hero-photo figcaption{position:absolute;right:16px;bottom:10px;z-index:2;margin:0;font-size:11px;color:rgba(255,255,255,.65)}
 .eyebrow{display:inline-block;border:1px solid rgba(255,255,255,.35);color:#e6dcc8;font-size:12.5px;padding:4px 12px;border-radius:99px;margin-bottom:22px;letter-spacing:.06em}
 h1{font-family:"Noto Serif JP",serif;font-size:clamp(25px,5.2vw,40px);line-height:1.5;font-weight:700;letter-spacing:.01em}
 h1 em{font-style:normal;color:#e8c583;border-bottom:2px solid rgba(232,197,131,.5);padding-bottom:2px}
@@ -370,7 +372,6 @@ footer a:hover{text-decoration:underline}
 
 @media(max-width:640px){
   section{padding:48px 0}
-  .hero{padding:36px 0 32px}
   .detail{padding:24px 18px}
   .hd-cta{padding:8px 12px;font-size:12px}
 }
