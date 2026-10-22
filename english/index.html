@@ -224,10 +224,10 @@ h1 em{font-style:normal;color:#e8c583;border-bottom:2px solid rgba(232,197,131,.
 
 /* ── フロー図（ひとり／伴走） ── */
 .vs{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;margin-top:22px}
-.vs-row{display:grid;grid-template-columns:118px repeat(4,minmax(0,1fr)) 144px;gap:10px;align-items:stretch}
+.vs-row{display:grid;grid-template-columns:118px repeat(4,minmax(0,1fr)) 144px;gap:10px 22px;align-items:stretch}
 .vs-row+.vs-row{margin-top:12px}
 .vs-who{display:flex;align-items:center;white-space:nowrap;padding-right:6px;font-family:"Noto Serif JP",serif;font-weight:700;font-size:15px}
-.vs-s{position:relative;display:flex;align-items:center;gap:8px;padding:12px 10px;white-space:nowrap;border-radius:8px;font-size:13.5px;font-weight:600;line-height:1.4}
+.vs-s{position:relative;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 10px;white-space:nowrap;border-radius:8px;font-size:13.5px;font-weight:600;line-height:1.4}
 .vs-s i{flex:none;width:18px;height:18px;border-radius:50%;font-style:normal;font-size:11px;display:grid;place-items:center;color:#fff}
 .vs-end{display:flex;align-items:center;justify-content:center;white-space:nowrap;border-radius:8px;font-size:16px;font-weight:700;text-align:center;padding:12px}
 .vs-row.solo .vs-who{color:#6b7480}
@@ -240,7 +240,9 @@ h1 em{font-style:normal;color:#e8c583;border-bottom:2px solid rgba(232,197,131,.
 .vs-row.guided .vs-end{background:var(--s1);color:#fff}
 .vs-note{margin-top:16px;padding-top:12px;border-top:1px dashed #d5d9de;font-size:13px;color:#5c6570;line-height:1.7}
 .vs-note strong{color:var(--s1)}
-@media(max-width:860px){.vs-row{grid-template-columns:1fr 1fr;gap:8px}.vs-who,.vs-end{grid-column:1/-1}.vs-row+.vs-row{margin-top:20px}}
+.vs-s::after{content:"";position:absolute;right:-15px;top:50%;width:7px;height:7px;border-top:2px solid #b4bcc5;border-right:2px solid #b4bcc5;transform:translateY(-50%) rotate(45deg)}
+.vs-row.guided .vs-s::after{border-color:#8fb0d2}
+@media(max-width:860px){.vs-s::after{right:auto;left:50%;top:auto;bottom:-13px;transform:translateX(-50%) rotate(135deg)}.vs-row{grid-template-columns:1fr;gap:16px}.vs-who,.vs-end{grid-column:1/-1}.vs-row+.vs-row{margin-top:20px}}
 
 /* ── 横棒グラフ ── */
 .chartbox{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 24px;margin-bottom:26px}
@@ -271,8 +273,7 @@ h1 em{font-style:normal;color:#e8c583;border-bottom:2px solid rgba(232,197,131,.
   .bar-row[data-note]::after{left:0}
   .stat-num{font-size:38px}
   .vs{padding:18px 16px}
-  .vs-row{grid-template-columns:1fr 1fr;gap:8px}
-  .vs-s{font-size:13px;padding:11px 10px;gap:6px}
+  .vs-s{padding:9px 10px}
   .vs-who{grid-column:1/-1}
   .vs-end{grid-column:1/-1}
   .vs-row+.vs-row{margin-top:20px}
@@ -443,21 +444,20 @@ footer a:hover{text-decoration:underline}
     <div class="vs">
       <div class="vs-row solo">
         <div class="vs-who">ひとりだと</div>
-        <div class="vs-s"><i>1</i>教材を買う</div>
-        <div class="vs-s"><i>2</i>2週間は順調</div>
-        <div class="vs-s"><i>3</i>忙しくて中断</div>
-        <div class="vs-s"><i>4</i>誰も気づかない</div>
+        <div class="vs-s">教材を買う</div>
+        <div class="vs-s">2週間は順調</div>
+        <div class="vs-s">忙しくて中断</div>
+        <div class="vs-s">誰も気づかない</div>
         <div class="vs-end">3ヶ月でやめる</div>
       </div>
       <div class="vs-row guided">
         <div class="vs-who">伴走者がいると</div>
-        <div class="vs-s"><i>1</i>計画を作る</div>
-        <div class="vs-s"><i>2</i>週1で報告</div>
-        <div class="vs-s"><i>3</i>中断を先に察知</div>
-        <div class="vs-s"><i>4</i>計画を修正</div>
+        <div class="vs-s">計画を作る</div>
+        <div class="vs-s">週1で報告</div>
+        <div class="vs-s">中断を先に察知</div>
+        <div class="vs-s">計画を修正</div>
         <div class="vs-end">止まらず続く</div>
       </div>
-      <p class="vs-note">英語学習経験のある社会人の67.6%が「挫折は何度もある」と回答。コーチング型の料金は、この<strong>「察知して立て直す仕組み」</strong>への対価です。</p>
     </div>
 
     <figure class="photo photo-in">
