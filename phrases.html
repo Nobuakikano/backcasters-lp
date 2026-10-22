@@ -39,10 +39,18 @@
     line-height:1.7;color:var(--ink);background:var(--bg);
     -webkit-font-smoothing:antialiased;
   }
-  header{background:#fff;border-bottom:1px solid var(--line);padding:2.5rem 1rem 2rem;text-align:center}
-  .brand{font-size:.8rem;color:var(--ink-soft);letter-spacing:.14em;margin-bottom:.75rem}
+  header{background:linear-gradient(160deg,#0f2440 0%,#1b3a63 100%);color:#fff;padding:3rem 1rem 0;text-align:center}
+  .brand{display:inline-block;font-size:.78rem;color:#e8c583;letter-spacing:.14em;text-decoration:none;margin-bottom:.9rem}
+  header h1{font-size:2.2rem}
+  header h1 em{font-style:normal;color:#e8c583}
+  .subtitle{font-size:.95rem;color:#c9d3e0;margin-top:.6rem}
+  .steps{list-style:none;max-width:868px;margin:2.2rem auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;transform:translateY(50%)}
+  .steps li{background:#fff;color:var(--ink);border-radius:10px;padding:1.1rem 1rem;box-shadow:0 10px 28px rgba(15,36,64,.14);text-align:left;display:flex;gap:.8rem;align-items:center}
+  .steps .n{flex:none;width:2.2rem;height:2.2rem;border-radius:50%;background:#0f2440;color:#e8c583;display:grid;place-items:center;font-family:"Noto Serif JP",serif;font-weight:700}
+  .steps b{display:block;font-size:.98rem}
+  .steps small{display:block;font-size:.8rem;color:var(--ink-soft);line-height:1.5}
+  .container{padding-top:5.5rem!important}
   h1{font-family:"Noto Serif JP",serif;font-size:1.9rem;font-weight:700;line-height:1.35;letter-spacing:.01em}
-  .subtitle{font-size:.95rem;color:var(--ink-soft);margin-top:.75rem}
   .container{max-width:900px;margin:0 auto;padding:2rem 1rem 0}
   .intro{background:#fff;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:8px;padding:1.5rem;margin-bottom:3rem}
   .intro h2{font-size:1.05rem;margin-bottom:.75rem}
@@ -110,6 +118,10 @@
   footer p + p{margin-top:.6rem}
   @media(max-width:600px){
     h1{font-size:1.5rem}
+    header h1{font-size:1.6rem}
+    .steps{grid-template-columns:1fr;gap:.5rem;transform:none;margin:1.6rem auto 0;padding-bottom:1.5rem}
+    .steps li{padding:.75rem .9rem}
+    .container{padding-top:2rem!important}
     section > h2{font-size:1.15rem}
     .phrase-grid{grid-template-columns:1fr}
   }
@@ -118,19 +130,17 @@
 <body>
 
 <header>
-  <div class="brand">ひとりでやらない英語</div>
-  <h1>瞬間英作文 80フレーズ集</h1>
-  <p class="subtitle">社会人のビジネス英語 × 瞬間英作文トレーニング用</p>
+  <a class="brand" href="/english/">ひとりでやらない英語</a>
+  <h1>瞬間英作文 <em>80</em>フレーズ集</h1>
+  <p class="subtitle">日本語を見て、1〜2秒で英語を口に出す練習用</p>
+  <ol class="steps">
+    <li><span class="n">1</span><span><b>日本語を見る</b><small>英語はかくれています</small></span></li>
+    <li><span class="n">2</span><span><b>声に出す</b><small>黙読ではなく口に出す</small></span></li>
+    <li><span class="n">3</span><span><b>タップで確認</b><small>1日3分、くり返す</small></span></li>
+  </ol>
 </header>
 
 <div class="container">
-
-  <div class="intro">
-    <h2>使い方</h2>
-    <p>日本語を見て、1〜2秒で英語を<strong>声に出す</strong>練習用です。黙読では効果が出にくいので、必ず口に出してください。</p>
-    <p>英語は最初かくれています。先に声に出してから、カードをタップして答えを確かめてください。</p>
-    <p>通勤中や休憩時間に、1日3分ずつで構いません。「考えてから言う」ではなく「考える前に出る」状態になるまで、同じフレーズを何度も繰り返すのがコツです。</p>
-  </div>
 
   <div class="yt-box">
     <p>毎日1本、新しい瞬間英作文をYouTubeで出しています。<small>音声つきで、聞いてすぐ口に出す練習ができます。</small></p>
