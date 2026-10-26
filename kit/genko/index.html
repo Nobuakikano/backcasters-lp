@@ -21,7 +21,7 @@ h3{font-size:14px;margin:18px 0 6px;color:var(--muted)}
 .bh button{border:0;border-radius:8px;background:var(--green);color:var(--bg);font:inherit;font-weight:700;padding:6px 16px;cursor:pointer}
 .bh button.done{background:var(--ok)}
 .thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}.thumbs img{width:100%;border-radius:6px;display:block;border:1px solid var(--line)}
-.dl{width:100%;border:0;border-radius:10px;background:var(--green);color:var(--bg);font:inherit;font-weight:700;font-size:16px;padding:13px;cursor:pointer}.dl.done{background:var(--ok)}
+.dl{display:block;text-align:center;text-decoration:none;box-sizing:border-box;width:100%;border:0;border-radius:10px;background:var(--green);color:var(--bg);font:inherit;font-weight:700;font-size:16px;padding:13px;cursor:pointer}.dl.done{background:var(--ok)}.dl.pc{margin-top:8px;background:transparent;color:var(--green);border:2px solid var(--green)}
 .msg{font-size:13px;color:var(--ok);margin:6px 0 0;min-height:1em}.hint{font-size:12px;color:var(--muted);margin:4px 0 0}
 textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit;font-size:13px;background:var(--bg);color:var(--ink);resize:vertical}
 </style></head><body><main>
@@ -31,8 +31,9 @@ textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;f
 <section class="day" id="d1" hidden>
 <h2><em>介護</em>親の介護、施設なら総額約806万円（平均で計算した目安）</h2>
 <h3>画像（5枚・Instagram用）</h3><div class="blk"><div class="thumbs"><a href="c/01/jikka_001_1.jpg" target="_blank"><img src="c/01/jikka_001_1.jpg" alt="1枚目" loading="lazy"></a><a href="c/01/jikka_001_2.jpg" target="_blank"><img src="c/01/jikka_001_2.jpg" alt="2枚目" loading="lazy"></a><a href="c/01/jikka_001_3.jpg" target="_blank"><img src="c/01/jikka_001_3.jpg" alt="3枚目" loading="lazy"></a><a href="c/01/jikka_001_4.jpg" target="_blank"><img src="c/01/jikka_001_4.jpg" alt="4枚目" loading="lazy"></a><a href="c/01/jikka_001_5.jpg" target="_blank"><img src="c/01/jikka_001_5.jpg" alt="5枚目" loading="lazy"></a></div>
-<button type="button" class="dl" data-files='["c/01/jikka_001_1.jpg","c/01/jikka_001_2.jpg","c/01/jikka_001_3.jpg","c/01/jikka_001_4.jpg","c/01/jikka_001_5.jpg"]'>5枚まとめて保存する</button><p class="msg"></p>
-<p class="hint">うまくいかないときは、画像を押して開き、長押しで「写真に追加」。</p></div><h3>動画の文字（3場面・約18秒）</h3><div class="blk"><div class="bh"><span>動画</span><button type="button" data-t="v1">コピー</button></div><textarea id="v1" readonly rows="5">① 806万円 ／ 施設で介護した場合の総額の目安（平均で計算）
+<button type="button" class="dl sp" data-files='["c/01/jikka_001_1.jpg","c/01/jikka_001_2.jpg","c/01/jikka_001_3.jpg","c/01/jikka_001_4.jpg","c/01/jikka_001_5.jpg"]'>5枚まとめて保存する（スマホ）</button><p class="msg"></p>
+<a class="dl pc" href="c/01/jikka_001_images.zip" download>パソコンに保存（5枚をZIPで）</a>
+<p class="hint">スマホでうまくいかないときは、画像を押して開き、長押しで「写真に追加」。パソコンはZIPを開くと5枚が入っています。</p></div><h3>動画の文字（3場面・約18秒）</h3><div class="blk"><div class="bh"><span>動画</span><button type="button" data-t="v1">コピー</button></div><textarea id="v1" readonly rows="5">① 806万円 ／ 施設で介護した場合の総額の目安（平均で計算）
 ② パンフレットの「月額」だけでは、決められない
 ③ まだ元気なうちに、総額の話をしておきたい。
 （最後に「続きはプロフィールから」）</textarea></div>
@@ -478,7 +479,7 @@ document.querySelectorAll(".bh button").forEach(b=>b.addEventListener("click",as
   try{await navigator.clipboard.writeText(a.value)}catch(e){a.removeAttribute("readonly");a.select();document.execCommand("copy");a.setAttribute("readonly","")}
   b.textContent="コピーしました";b.classList.add("done");setTimeout(()=>{b.textContent="コピー";b.classList.remove("done")},2000);
 }));
-document.querySelectorAll(".dl").forEach(b=>b.addEventListener("click",async()=>{
+document.querySelectorAll(".dl.sp").forEach(b=>b.addEventListener("click",async()=>{
   const m=b.nextElementSibling;m.textContent="準備中…";
   try{
     const urls=JSON.parse(b.dataset.files);
