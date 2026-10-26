@@ -958,7 +958,7 @@ document.querySelectorAll('[data-service]').forEach(function(el){
     var href = el.href || '';
     gtag('event', 'affiliate_click', {
       service: el.getAttribute('data-service'),
-      is_affiliate: href.indexOf('a8.net') >= 0 ? 'yes' : 'no',
+      is_affiliate: (href.indexOf('a8.net') >= 0 || href.indexOf('afi-b.com') >= 0) ? 'yes' : 'no',
       link_url: href
     });
   });
