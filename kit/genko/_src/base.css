@@ -1,0 +1,58 @@
+
+:root{--bg:#f6f2e9;--ink:#1f2622;--muted:#5d6861;--green:#2b3a2f;--gold:#b98a4a;--stamp:#b5452f;--line:#e2d9c6}
+*{box-sizing:border-box;margin:0}
+body{background:#888}
+.s{width:1080px;height:1350px;background:var(--bg);color:var(--ink);font-family:"Noto Sans CJK JP";position:relative;overflow:hidden;padding:110px 96px 0}
+.serif{font-family:"Noto Serif CJK JP";font-weight:700}
+.stamp{display:inline-block;border:5px solid var(--stamp);color:var(--stamp);font-family:"Noto Serif CJK JP";font-weight:700;font-size:44px;line-height:1;padding:14px 20px;border-radius:12px;letter-spacing:.1em}
+.brand{position:absolute;left:96px;bottom:56px;font-size:28px;color:var(--muted);letter-spacing:.04em}
+.brand b{color:var(--green)}
+.pg{position:absolute;right:96px;bottom:56px;font-size:30px;color:var(--muted);font-weight:700}
+.h{font-size:58px;line-height:1.45;font-family:"Noto Serif CJK JP";font-weight:700;color:var(--green)}
+.src{position:absolute;left:96px;right:96px;bottom:120px;font-size:24px;color:var(--muted);line-height:1.6;border-top:2px solid var(--line);padding-top:18px}
+/* 1 cover */
+.c1{padding-top:250px}
+.c1 .lead{font-size:62px;margin-top:40px;font-family:"Noto Serif CJK JP";font-weight:700;color:var(--green)}
+.c1 .big{font-family:"Noto Serif CJK JP";font-weight:700;color:var(--stamp);font-size:250px;line-height:1;margin-top:20px;letter-spacing:-.02em}
+.c1 .big small{font-size:110px;margin-left:8px}
+.c1 .big small.pre{margin:0 12px 0 0}
+.c1 .big{margin-top:40px!important}
+.c1 .note{font-size:36px;color:var(--muted);margin-top:24px}
+.c1 .tag{font-size:46px;margin-top:56px;font-weight:700;color:var(--ink)}
+.c1 .band{position:absolute;left:0;right:0;bottom:0;height:440px;background:url(house.jpg) right 30%/cover no-repeat}
+.c1 .band::before{content:"";position:absolute;inset:0;background:linear-gradient(var(--bg),rgba(246,242,233,0) 45%)}
+.c1 .brand,.c1 .pg{color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.c1 .brand b{color:#fff}
+/* 2 formula */
+.f{margin-top:50px;background:#fff;border:3px solid var(--line);border-radius:28px;padding:36px 52px}
+.f .row{display:flex;justify-content:space-between;align-items:baseline;font-size:44px;padding:14px 0;border-bottom:2px dashed var(--line)}
+.f .row span{color:var(--muted);font-size:38px}
+.f .row b{font-size:56px}
+.f .op{font-size:46px;color:var(--gold);font-weight:700;text-align:center;line-height:1.2;padding:6px 0}
+.f .tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px}
+.f .tot span{font-size:42px;font-weight:700;color:var(--green)}
+.f .tot b{font-family:"Noto Serif CJK JP";font-size:96px;color:var(--stamp)}
+.warn{margin-top:30px;font-size:31px;line-height:1.7;color:var(--muted)}
+/* 3 bars */
+.bars{margin-top:44px;display:grid;gap:30px}
+.bar .lb{display:flex;justify-content:space-between;align-items:baseline;font-size:42px;font-weight:700;margin-bottom:14px}
+.bar .lb b{font-family:"Noto Serif CJK JP";font-size:66px}
+.bar .tr{height:48px;background:#ebe4d4;border-radius:12px;overflow:hidden}
+.bar .tr i{display:block;height:100%;background:var(--gold);border-radius:12px}
+.bar.hl .tr i{background:var(--stamp)} .bar.hl .lb b{color:var(--stamp)}
+.call{margin-top:44px;background:var(--green);color:#fff;border-radius:24px;padding:34px 44px;font-size:42px;font-weight:700;line-height:1.5}
+.call em{font-style:normal;color:#f0d5a5}
+/* 4 ask */
+.ask{margin-top:64px;display:grid;gap:36px}
+.q{background:#fff;border:3px solid var(--line);border-radius:24px;padding:40px 44px;display:flex;gap:30px;align-items:flex-start}
+.q .n{flex:none;width:76px;height:76px;border-radius:50%;background:var(--green);color:#fff;font-size:42px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.q p{font-size:42px;line-height:1.55;font-weight:700}
+.q p small{display:block;font-size:32px;color:var(--muted);font-weight:400;margin-top:8px}
+.q.lock{border-style:dashed;background:transparent}
+.q.lock .n{background:var(--line);color:var(--muted)}
+.q.lock p{color:var(--muted)}
+/* 5 cta */
+.c5{display:flex;flex-direction:column;justify-content:center;padding-bottom:200px}
+.c5 .msg{font-family:"Noto Serif CJK JP";font-weight:700;font-size:84px;line-height:1.5;color:var(--green)}
+.c5 .sub{font-size:40px;line-height:1.7;margin-top:56px}
+.c5 .btn{margin-top:24px;align-self:flex-start;background:var(--stamp);color:#fff;font-size:44px;font-weight:700;padding:30px 48px;border-radius:999px}
